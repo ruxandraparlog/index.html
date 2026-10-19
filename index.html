@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schola Latina: Sintagma Gerunzială și Gerundivală</title>
+    <!-- Fonturi Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Inter:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f0c0a;
+            --stone-panel: #1b1714;
+            --stone-border: #3a322a;
+            --gold-primary: #f0c040;
+            --gold-dark: #a88018;
+            --parchment-bg: #f5eedb;
+            --parchment-text: #2a2118;
+            --parchment-border: #d4c5a9;
+            --crimson: #a02020;
+            --crimson-light: #e04040;
+            --green: #2b8a3e;
+            --text-light: #f0e6d2;
+            --text-dim: #a09585;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            padding: 20px 10px;
+            background-image: 
+                radial-gradient(circle at 50% 0%, #2a1a10 0%, transparent 70%),
+                linear-gradient(rgba(15, 12, 10, 0.95), rgba(15, 12, 10, 0.95));
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--stone-panel);
+            border: 4px solid var(--gold-primary);
+            box-shadow: 0 0 20px rgba(240, 192, 64, 0.2);
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        header h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-primary);
+            font-size: 2rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0px #000;
+        }
+
+        header p {
+            color: var(--text-dim);
+            font-size: 1.05rem;
+        }
+
+        .pixel-subtitle {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.65rem;
+            color: var(--crimson-light);
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* NAVIGATION BAR */
+        .nav-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+            background: rgba(15, 12, 10, 0.95);
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--stone-border);
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-btn {
+            background: var(--stone-panel);
+            color: var(--gold-primary);
+            border: 2px solid var(--gold-dark);
+            padding: 12px 18px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--gold-primary);
+            color: #000;
+            box-shadow: 0 0 10px rgba(240, 192, 64, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* SECTIONS */
+        .section-card {
+            background: var(--stone-panel);
+            border: 2px solid var(--stone-border);
+            border-left: 6px solid var(--gold-primary);
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-primary);
+            font-size: 1.6rem;
+            border-bottom: 2px solid var(--stone-border);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title span.badge {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.6rem;
+            background: var(--crimson);
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 3px;
+        }
+
+        /* PARCHMENT CARDS FOR CONTENT */
+        .parchment {
+            background: var(--parchment-bg);
+            color: var(--parchment-text);
+            padding: 25px;
+            border: 2px solid var(--parchment-border);
+            border-radius: 4px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        .parchment h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--crimson);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(160, 32, 32, 0.2);
+            padding-bottom: 5px;
+        }
+
+        .parchment p {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        .parchment ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .parchment li {
+            margin-bottom: 6px;
+        }
+
+        /* COMPARISON TABLE */
+        .latin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #fff;
+            color: #000;
+            font-size: 0.95rem;
+        }
+
+        .latin-table th, .latin-table td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .latin-table th {
+            background: var(--crimson);
+            color: #fff;
+            font-family: 'Cinzel', serif;
+        }
+
+        .latin-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .latin-tag {
+            display: inline-block;
+            background: #e2e8f0;
+            color: #1a202c;
+            font-family: monospace;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        /* DIALOGUE RPG SECTION */
+        .rpg-chat-box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .dialogue-card {
+            display: flex;
+            gap: 20px;
+            background: rgba(0,0,0,0.3);
+            border: 2px solid var(--stone-border);
+            padding: 20px;
+            border-radius: 8px;
+            align-items: flex-start;
+        }
+
+        .dialogue-card.marcus { border-color: #a02020; }
+        .dialogue-card.livia { border-color: #2b8a3e; }
+        .dialogue-card.cassius { border-color: #7950f2; }
+        .dialogue-card.julia { border-color: #f59f00; }
+
+        .avatar-box {
+            width: 80px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .avatar-svg {
+            width: 70px;
+            height: 70px;
+            background: #000;
+            border: 2px solid var(--gold-primary);
+            border-radius: 4px;
+            image-rendering: pixelated;
+        }
+
+        .char-name {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.55rem;
+            color: var(--gold-primary);
+            margin-top: 6px;
+            display: block;
+        }
+
+        .char-title {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            display: block;
+        }
+
+        .speech-bubble {
+            flex-grow: 1;
+            background: var(--parchment-bg);
+            color: var(--parchment-text);
+            padding: 15px 20px;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .speech-latin {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--crimson);
+            margin-bottom: 6px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .speech-ro {
+            font-size: 1rem;
+            color: #333;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .speech-explain {
+            font-size: 0.85rem;
+            background: rgba(0,0,0,0.06);
+            padding: 8px;
+            border-radius: 4px;
+            border-left: 3px solid var(--crimson);
+            color: #444;
+        }
+
+        /* EXAMPLES LIST */
+        .example-item {
+            background: #fff;
+            border: 1px solid var(--parchment-border);
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 4px;
+            border-left: 4px solid var(--gold-dark);
+        }
+
+        .example-latin {
+            font-family: 'Cinzel', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--crimson);
+        }
+
+        .example-ro {
+            color: #222;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .example-grammar {
+            font-size: 0.85rem;
+            color: #555;
+            margin-top: 6px;
+            background: #f0f0f0;
+            padding: 6px 10px;
+            border-radius: 3px;
+        }
+
+        /* EXERCISES & NATIVE ACCORDION */
+        .exercise-card {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--stone-border);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+
+        .exercise-q {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold-primary);
+            margin-bottom: 15px;
+        }
+
+        .options-list {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .options-list li {
+            background: var(--stone-panel);
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border: 1px solid var(--stone-border);
+            border-radius: 4px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Native Accordion for answers */
+        details.answer-details {
+            background: var(--parchment-bg);
+            color: var(--parchment-text);
+            border: 2px solid var(--gold-primary);
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+
+        details.answer-details summary {
+            padding: 12px 15px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            cursor: pointer;
+            background: var(--gold-primary);
+            color: #000;
+            outline: none;
+            user-select: none;
+        }
+
+        details.answer-details summary:hover {
+            background: var(--gold-dark);
+            color: #fff;
+        }
+
+        .answer-content {
+            padding: 15px;
+            font-size: 0.95rem;
+        }
+
+        .answer-content strong.correct {
+            color: var(--green);
+            font-size: 1.05rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--stone-border);
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .dialogue-card {
+                flex-direction: column;
+            }
+            .avatar-box {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                text-align: left;
+            }
+            .avatar-svg {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <header>
+        <h1>Schola Latina</h1>
+        <p>Lecție Interactivă de Limba Latină în Limba Română</p>
+        <span class="pixel-subtitle">◆ SINTAGMA GERUNZIALĂ ȘI GERUNDIVALĂ ◆</span>
+    </header>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="nav-bar">
+        <a href="#lectia" class="nav-btn">📜 1. Lecția în Sine</a>
+        <a href="#dialog" class="nav-btn">🎭 2. RPG Dialog</a>
+        <a href="#exemple" class="nav-btn">🔍 3. Exemple (10+)</a>
+        <a href="#exercitii" class="nav-btn">⚔️ 4. Exerciții (8)</a>
+    </nav>
+
+    <!-- SECȚIUNEA 1: LECȚIA ÎN SINE -->
+    <section id="lectia" class="section-card">
+        <h2 class="section-title">
+            📜 1. Lecția în Sine: Teorie Gramaticală
+            <span class="badge">TEORIE</span>
+        </h2>
+
+        <!-- Gerunziul -->
+        <div class="parchment">
+            <h3>1. Gerunziul Latin (Modul Nume Verbal Activ)</h3>
+            <p>Gerunziul este un <strong>substantiv verbal activ</strong>. Se folosește doar la cazurile declinării a II-a singular (Genitiv, Dativ, Acuzativ cu prepoziție, Ablativ) pentru a suplini lipsa infinitivului la cazurile oblice.</p>
+            <ul>
+                <li><strong>Sufix caracteristic:</strong> <span class="latin-tag">-nd-</span> (ex: <em>amandi, docendi, legendi, audiendi</em>).</li>
+                <li><strong>Genitiv:</strong> <em>ars amandi</em> = arta de a iubi / arta iubirii.</li>
+                <li><strong>Acuzativ (cu prepoziție):</strong> <em>ad discendum</em> = pentru a învăța.</li>
+                <li><strong>Ablativ (instrumental / cauză):</strong> <em>docendo discimus</em> = învățăm învățând (prin predare).</li>
+            </ul>
+        </div>
+
+        <!-- Gerundivul -->
+        <div class="parchment">
+            <h3>2. Gerundivul Latin (Adjectiv Verbal Pasiv)</h3>
+            <p>Gerundivul este un <strong>adjectiv verbal pasiv</strong> care exprimă o acțiune ce trebuie îndeplinită. Se acordă în <strong>gen, număr și caz</strong> cu substantivul pe care îl determină.</p>
+            <ul>
+                <li><strong>Exemplu:</strong> <em>liber legendus</em> = o carte ce trebuie citită.</li>
+                <li><strong>Pasivul Perifrastic (Gerundiv + Esse):</strong> Exprimă obligația sau necesitatea.</li>
+                <li><strong>Celebrul exemplu:</strong> <em>Carthago delenda est!</em> = Cartagina trebuie distrusă!</li>
+            </ul>
+        </div>
+
+        <!-- Sintagmele -->
+        <div class="parchment">
+            <h3>3. Sintagma Gerundivală (Transformarea Gerunzială)</h3>
+            <p>Atunci când un Gerunziu ar trebui să aibă un complement direct în Acuzativ, limba latină preferă să transforme totul într-o <strong>Sintagmă Gerundivală</strong>:</p>
+            
+            <table class="latin-table">
+                <thead>
+                    <tr>
+                        <th>Construcție Gerunzială (Rară)</th>
+                        <th>Sintagmă Gerundivală (Preferată)</th>
+                        <th>Traducere în Română</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><em>Cupidus legendi libros</em></td>
+                        <td><em>Cupidus <strong>librorum legendorum</strong></em></td>
+                        <td>Dornic de a citi cărți</td>
+                    </tr>
+                    <tr>
+                        <td><em>Ad defendendum urbem</em></td>
+                        <td><em>Ad <strong>urbem defendendam</strong></em></td>
+                        <td>Pentru a apăra cetatea</td>
+                    </tr>
+                    <tr>
+                        <td><em>In scribendo epistulam</em></td>
+                        <td><em>In <strong>epistula scribenda</strong></em></td>
+                        <td>În scrierea unei scrisori</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- SECȚIUNEA 2: RPG DIALOG -->
+    <section id="dialog" class="section-card">
+        <h2 class="section-title">
+            🎭 2. Dialog între Personaje RPD
+            <span class="badge">SITUAȚII REALE</span>
+        </h2>
+        <p style="color: var(--text-dim); margin-bottom: 20px;">
+            Urmărește dialogul dintre cetățenii Romei pentru a vedea cum foloseau gerunziul și gerundivul în vorbirea cotidiană și solemnă.
+        </p>
+
+        <div class="rpg-chat-box">
+
+            <!-- Replica 1: Marcus -->
+            <div class="dialogue-card marcus">
+                <div class="avatar-box">
+                    <svg class="avatar-svg" viewBox="0 0 16 16">
+                        <rect x="2" y="2" width="12" height="12" fill="#a02020"/>
+                        <rect x="4" y="4" width="8" height="8" fill="#f0c040"/>
+                        <rect x="6" y="6" width="4" height="2" fill="#000"/>
+                    </svg>
+                    <span class="char-name">MARCUS</span>
+                    <span class="char-title">Centurion</span>
+                </div>
+                <div class="speech-bubble">
+                    <div class="speech-latin">"Milites! Tempus ad pugnandum venit! Ad urbem defendendam para te!"</div>
+                    <div class="speech-ro">"Ostași! A sosit timpul pentru a lupta! Pregătește-te pentru a apăra cetatea!"</div>
+                    <div class="speech-explain">
+                        📌 <strong>Analiză:</strong> <em>ad pugnandum</em> = Gerunziu Acuzativ (scop). <br>
+                        📌 <strong>Sintagmă Gerundivală:</strong> <em>ad urbem defendendam</em> (Gerundiv acordat cu <em>urbem</em> la Acuzativ f. sg.).
+                    </div>
+                </div>
+            </div>
+
+            <!-- Replica 2: Livia -->
+            <div class="dialogue-card livia">
+                <div class="avatar-box">
+                    <svg class="avatar-svg" viewBox="0 0 16 16">
+                        <rect x="2" y="2" width="12" height="12" fill="#2b8a3e"/>
+                        <rect x="5" y="5" width="6" height="6" fill="#f5eedb"/>
+                        <rect x="6" y="7" width="4" height="2" fill="#000"/>
+                    </svg>
+                    <span class="char-name">LIVIA</span>
+                    <span class="char-title">Erudită</span>
+                </div>
+                <div class="speech-bubble">
+                    <div class="speech-latin">"Non solum gladio, Marce, sed etiam studio librorum legendorum patria servanda est."</div>
+                    <div class="speech-ro">"Nu doar cu sabia, Marcus, ci și prin studiul citirii cărților patria trebuie salvată."</div>
+                    <div class="speech-explain">
+                        📌 <strong>Sintagmă Gerundivală:</strong> <em>librorum legendorum</em> (Genitiv plural). <br>
+                        📌 <strong>Gerundiv de obligație:</strong> <em>patria servanda est</em> (Pasiv perifrastic).
+                    </div>
+                </div>
+            </div>
+
+            <!-- Replica 3: Cassius -->
+            <div class="dialogue-card cassius">
+                <div class="avatar-box">
+                    <svg class="avatar-svg" viewBox="0 0 16 16">
+                        <rect x="2" y="2" width="12" height="12" fill="#7950f2"/>
+                        <rect x="4" y="4" width="8" height="8" fill="#ffffff"/>
+                        <rect x="6" y="6" width="4" height="2" fill="#000"/>
+                    </svg>
+                    <span class="char-name">CASSIUS</span>
+                    <span class="char-title">Senator</span>
+                </div>
+                <div class="speech-bubble">
+                    <div class="speech-latin">"In senatu, de re publica bene regenda semper cogitandum est!"</div>
+                    <div class="speech-ro">"În senat, trebuie să cugetăm mereu despre binele guvernării statului!"</div>
+        
